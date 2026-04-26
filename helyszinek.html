@@ -249,9 +249,52 @@ document.querySelectorAll(".fade-in").forEach(el => {
 </script>
 
 <a href="tel:+36204544068"
-   class="fixed bottom-5 right-5 bg-orange-500 p-4 rounded-full shadow-lg ">
-   📞
+   class="fixed bottom-5 right-5 bg-orange-500 text-white p-4 rounded-full shadow-lg z-[9999]  hover:scale-110 transition flex items-center justify-center">
+
+   <span class="text-xl">📞</span>
+
 </a>
+
+<div id="cookieBanner"
+     class="fixed bottom-0 left-0 w-full bg-black text-white p-4 flex flex-col md:flex-row justify-between items-center z-[9999]">
+
+  <p class="text-sm mb-2 md:mb-0">
+    Ez a weboldal sütiket használ a jobb felhasználói élmény érdekében.
+    <a href="adatkezeles.html" class="text-orange-500 underline">Részletek</a>
+  </p>
+
+  <div class="space-x-2">
+    <button onclick="acceptCookies()"
+      class="bg-orange-500 px-4 py-2 rounded">
+      Elfogadom
+    </button>
+
+    <button onclick="declineCookies()"
+      class="border border-gray-500 px-4 py-2 rounded">
+      Elutasítom
+    </button>
+  </div>
+
+</div>
+
+<script>
+function acceptCookies() {
+  localStorage.setItem("cookieConsent", "accepted");
+  document.getElementById("cookieBanner").style.display = "none";
+}
+
+function declineCookies() {
+  localStorage.setItem("cookieConsent", "declined");
+  document.getElementById("cookieBanner").style.display = "none";
+}
+
+window.onload = function() {
+  const consent = localStorage.getItem("cookieConsent");
+  if (consent) {
+    document.getElementById("cookieBanner").style.display = "none";
+  }
+};
+</script>
 
 </body>
 </html>
