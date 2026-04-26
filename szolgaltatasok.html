@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szolgáltatások - Papp Ferenc EV</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+
+  <style>
+    a {
+      transition: 0.2s;
+    }
+
+    a:hover {
+      color: #ff6a00;
+    }
+
+    .card {
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.6s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="text-white">
+
+<!-- 🔝 TOP BAR -->
+<header class="bg-black text-sm px-4 py-2 flex justify-between border-b border-gray-800">
+  <div id="datetime"></div>
+  <div>
+    📞 <a href="tel:+36204544068">+36 20 454 4068</a> |
+    ✉️ <a href="mailto:papp.ferenc.vill@gmail.com">Email</a>
+  </div>
+</header>
+
+<!-- 🧭 NAV -->
+<nav class="bg-[#111] px-6 py-4 flex justify-between items-center relative">
+
+  <!-- LOGO -->
+  <div class="text-xl font-bold text-orange-500">
+    Papp Ferenc EV
+  </div>
+
+  <!-- DESKTOP MENU -->
+  <div class="space-x-6 hidden md:block">
+    <a href="index.html">Főoldal</a>
+    <a href="szolgaltatasok.html">Szolgáltatások</a>
+    <a href="blog.html">Blog</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="helyszinek.html">Helyszínek</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="ajanlatkeres.html" class="bg-orange-500 px-3 py-1 rounded">Ajánlatkérés</a>
+  </div>
+
+  <!-- MOBILE BUTTON -->
+  <button onclick="toggleMenu()" class="md:hidden text-2xl">
+    ☰
+  </button>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+       class="hidden absolute top-full left-0 w-full bg-black text-center flex flex-col space-y-4 py-6 z-50">
+
+    <a href="index.html">Főoldal</a>
+    <a href="szolgaltatasok.html">Szolgáltatások</a>
+    <a href="blog.html">Blog</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="helyszinek.html">Helyszínek</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="ajanlatkeres.html" class="text-orange-500">Ajánlatkérés</a>
+
+  </div>
+
+</nav>
+
+<!-- ⚡ HEADER -->
+<section class="text-center py-12">
+  <h1 class="text-3xl md:text-4xl text-orange-500 font-bold">
+    Szolgáltatások
+  </h1>
+</section>
+
+<!-- 🔽 ACCORDION -->
+<section class="max-w-4xl mx-auto px-4 space-y-4">
+
+  <!-- 1 -->
+  <div class="bg-[#1f1f1f] rounded">
+    <button class="w-full text-left p-4 font-bold" onclick="toggle(this)">
+      Biztosítéktábla csere
+    </button>
+    <div class="hidden p-4 border-t border-gray-700">
+      <ul class="space-y-1">
+        <li>39.000 Ft – 6 kismegszakítóig + FI relé</li>
+        <li>3.000 Ft/db – áramkör bővítés</li>
+        <li>FI relé (1 fázis): 18.000 Ft</li>
+        <li>FI relé (3 fázis): 24.000 Ft</li>
+        <li>Síncsengő: 5.000 Ft-tól</li>
+      </ul>
+      <p class="text-gray-400 mt-2 text-sm">
+        Az árak az anyagköltséget nem tartalmazzák.
+      </p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="bg-[#1f1f1f] rounded">
+    <button class="w-full text-left p-4 font-bold" onclick="toggle(this)">
+      Eszközök bekötése
+    </button>
+    <div class="hidden p-4 border-t border-gray-700">
+      <ul class="space-y-1">
+        <li>Sütő: 20.000 Ft</li>
+        <li>Főzőlap: 20.000 Ft</li>
+        <li>Kábelezés: 8.000 Ft/fm</li>
+        <li>Páraelszívó: 8.000 Ft</li>
+        <li>Termosztát: 8.000 Ft</li>
+        <li>Villanybojler: 40.000 Ft-tól</li>
+        <li>Autótöltő: 40.000 Ft</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="bg-[#1f1f1f] rounded">
+    <button class="w-full text-left p-4 font-bold" onclick="toggle(this)">
+      Felújítások
+    </button>
+    <div class="hidden p-4 border-t border-gray-700">
+      <ul class="space-y-1">
+        <li>Kiállás: 10.900 Ft</li>
+        <li>Falon kívül: 6.000 Ft/fm</li>
+        <li>Süllyesztve: 8.000 Ft</li>
+        <li>Bontás: 500 Ft/db</li>
+        <li>Panel csatornában: 5.000 Ft/fm</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="bg-[#1f1f1f] rounded">
+    <button class="w-full text-left p-4 font-bold" onclick="toggle(this)">
+      Szerelvényezés
+    </button>
+    <div class="hidden p-4 border-t border-gray-700">
+      <ul class="space-y-1">
+        <li>Kapcsoló: 2.500 Ft</li>
+        <li>Konnektor: 2.500 Ft</li>
+        <li>Lámpa: 5.000 Ft</li>
+        <li>Komplex lámpa: 15.000 Ft</li>
+        <li>LED szalag: 3.000 Ft/fm</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="bg-[#1f1f1f] rounded">
+    <button class="w-full text-left p-4 font-bold" onclick="toggle(this)">
+      Hibakeresés
+    </button>
+    <div class="hidden p-4 border-t border-gray-700">
+      <ul>
+        <li>Első óra: 12.000 Ft</li>
+        <li>További órák: +10.000 Ft</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- 💰 ÁRKÉPZÉS -->
+<section class="max-w-4xl mx-auto p-6 mt-10 bg-[#111] rounded">
+  <h2 class="text-xl text-orange-500 mb-4">Árképzés</h2>
+
+  <p class="mb-4">
+    Kétféle módon dolgozunk:
+  </p>
+
+  <ul class="space-y-2">
+    <li><b>Kiállásos alapú</b> – egyedi számítás</li>
+    <li><b>Négyzetméter alapú</b> – kb. 13.000 Ft/m²</li>
+  </ul>
+
+  <p class="mt-4 text-gray-400 text-sm">
+    Egy 50 m² lakás teljes felújítása átlagosan ~900.000 Ft.
+    A pontos ár felmérés után kerül meghatározásra.
+  </p>
+</section>
+
+<!-- 📢 CTA -->
+<section class="text-center p-10">
+  <h2 class="text-2xl mb-4">Kérjen ajánlatot most</h2>
+  <a href="ajanlatkeres.html" class="bg-orange-500 px-6 py-3 rounded">
+    Ajánlatkérés
+  </a>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer class="bg-black p-6 text-gray-400 text-sm mt-10">
+  <div>© 2026 Papp Ferenc EV</div>
+</footer>
+
+<!-- ⏱️ IDŐ -->
+<script>
+function updateTime() {
+  const now = new Date();
+  document.getElementById("datetime").innerText =
+    now.toLocaleDateString() + " " + now.toLocaleTimeString();
+}
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+
+<!-- 🔽 ACCORDION JS -->
+<script>
+function toggle(button) {
+  const content = button.nextElementSibling;
+  content.classList.toggle("hidden");
+}
+</script>
+
+<a href="tel:+36204544068"
+   class="fixed bottom-5 right-5 bg-orange-500 p-4 rounded-full shadow-lg md:hidden">
+   📞
+</a>
+
+<!-- oldal tartalma -->
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+</script>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+});
+
+document.querySelectorAll(".fade-in").forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+
+</body>
+</html>
