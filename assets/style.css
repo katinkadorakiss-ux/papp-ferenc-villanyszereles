@@ -24,9 +24,27 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+  background: #050505;
+  color: #ffffff;
+  position: relative;
+}
+
+/* TELJES OLDAL HÁTTÉRKÉP */
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url("assets/img/villanyszereles-hatter.jpg") center center / cover no-repeat;
+  opacity: 0.20; /* EZT ÁLLÍTSD: 0.12 - 0.22 között ideális */
+}
+
+/* SÖTÉT OVERLAY A JOBB OLVASHATÓSÁGÉRT */
+.site-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78); /* 0.72 - 0.82 között nagyon jó */
+  z-index: -1;
 }
 
 a {
@@ -469,4 +487,5 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
   }
+
 }
