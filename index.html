@@ -4,295 +4,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Papp Ferenc EV - Villanyszerelés</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Villanyszerelés Székesfehérvár, Budapest és Pest megye területén. Gyors, precíz, megbízható kivitelezés.">
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-        font-family: 'Inter', sans-serif;
-        }
-    </style>
-
-    <style>
-        a {
-         transition: 0.2s;
-        }
-
-         a:hover {
-        color: #ff6a00;
-        }
-
-         .card {
-         transition: all 0.3s ease;
-        }
-
-        .card:hover {
-         transform: translateY(-5px);
-        }
-
-       .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: 0.6s;
-        }
-
-       .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-       }
-   </style>
-
+  <meta name="description" content="Villanyszerelés Budapest, Pest megye, Fejér megye és Székesfehérvár területén. Gyors, precíz és megbízható kivitelezés.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Papp Ferenc EV">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
+<body>
 
-<body class="text-white">
-
-<!-- 🔝 TOP BAR -->
-<header class="bg-black text-sm px-4 py-2 flex justify-between items-center border-b border-gray-800">
-  <div id="datetime"></div>
-  <div>
-    📞 <a href="tel:+36204544068" class="hover:text-orange-500">+36 20 454 4068</a> |
-    ✉️ <a href="mailto:papp.ferenc.vill@gmail.com" class="hover:text-orange-500">Email</a>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div id="datetime"></div>
+    <div>
+      📞 <a href="tel:+36204544068">+36 20 454 4068</a> |
+      ✉️ <a href="mailto:papp.ferenc.vill@gmail.com">papp.ferenc.vill@gmail.com</a>
+    </div>
   </div>
 </header>
 
-<!-- 🧭 NAVBAR -->
-<nav class="bg-[#111] px-6 py-4 flex justify-between items-center relative">
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">Papp Ferenc EV</a>
 
-  <!-- LOGO -->
-  <div class="text-xl font-bold text-orange-500">
-    Papp Ferenc EV
+    <div class="desktop-menu">
+      <a href="index.html" class="active">Főoldal</a>
+      <a href="szolgaltatasok.html">Szolgáltatások</a>
+      <a href="blog.html">Blog</a>
+      <a href="rolunk.html">Rólunk</a>
+      <a href="helyszinek.html">Helyszínek</a>
+      <a href="kapcsolat.html">Kapcsolat</a>
+      <a href="ajanlatkeres.html" class="btn btn-primary">Ajánlatkérés</a>
+    </div>
+
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
   </div>
 
-  <!-- DESKTOP MENU -->
-  <div class="space-x-6 hidden md:block">
-    <a href="index.html">Főoldal</a>
+  <div class="container mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Főoldal</a>
     <a href="szolgaltatasok.html">Szolgáltatások</a>
     <a href="blog.html">Blog</a>
     <a href="rolunk.html">Rólunk</a>
     <a href="helyszinek.html">Helyszínek</a>
     <a href="kapcsolat.html">Kapcsolat</a>
-    <a href="ajanlatkeres.html" class="bg-orange-500 px-3 py-1 rounded">Ajánlatkérés</a>
+    <a href="ajanlatkeres.html">Ajánlatkérés</a>
   </div>
-
-  <!-- MOBILE BUTTON -->
-  <button onclick="toggleMenu()" class="md:hidden text-2xl">
-    ☰
-  </button>
-
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu"
-       class="hidden absolute top-full left-0 w-full bg-black text-center flex flex-col space-y-4 py-6 z-50">
-
-    <a href="index.html">Főoldal</a>
-    <a href="szolgaltatasok.html">Szolgáltatások</a>
-    <a href="blog.html">Blog</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="helyszinek.html">Helyszínek</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
-    <a href="ajanlatkeres.html" class="text-orange-500">Ajánlatkérés</a>
-
-  </div>
-
 </nav>
 
-<!-- ⚡ HERO -->
-<section class="text-center py-20 px-6 bg-gradient-to-b from-black to-[#111] fade-in">
+<section class="hero fade-in">
+  <div class="container">
+    <h1>Villanyszerelés gyorsan, biztonságosan, precízen</h1>
+    <p>
+      Hibakeresés, biztosítéktábla csere, hálózat korszerűsítés és teljes felújítás
+      Budapest, Pest megye, Fejér megye és Székesfehérvár területén.
+    </p>
 
-  <h1 class="text-4xl md:text-6xl font-bold mb-6 text-orange-500">
-    Villanyszerelés gyorsan, biztonságosan
-  </h1>
-
-  <p class="max-w-2xl mx-auto text-gray-300 mb-8">
-    Megbízható kivitelezés, korrekt árak, gyors kiszállás.
-  </p>
-
-  <div class="space-x-4">
-    <a href="tel:+36204544068"
-       class="bg-orange-500 px-6 py-3 rounded text-lg">
-       Hívás most
-    </a>
-
-    <a href="ajanlatkeres.html"
-       class="border border-orange-500 px-6 py-3 rounded text-lg">
-       Ajánlatkérés
-    </a>
-  </div>
-
-</section>
-
-<!-- ❓ KÉRDÉSEK -->
-<section class="grid md:grid-cols-3 gap-6 p-6">
-  <div class="bg-[#1f1f1f] p-6 rounded">
-    Gyakran leold a biztosíték?
-  </div>
-  <div class="bg-[#1f1f1f] p-6 rounded">
-    Felújítást tervez?
-  </div>
-  <div class="bg-[#1f1f1f] p-6 rounded">
-    Új eszközt vásárolt, és szeretné beköttetni?
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:+36204544068" class="btn btn-primary">Hívás most</a>
+      <a href="ajanlatkeres.html" class="btn btn-outline">Ajánlatkérés</a>
+    </div>
   </div>
 </section>
 
-<!-- ✔ MIÉRT MI -->
-<section class="p-8 bg-black">
-  <h2 class="text-2xl text-orange-500 mb-6">Miért válasszon minket?</h2>
-
-  <div class="grid md:grid-cols-3 gap-6">
-    <div>✔ Több éves tapasztalat</div>
-    <div>✔ Precíz kivitelezés</div>
-    <div>✔ Gyors kapcsolatfelvétel</div>
+<section class="section">
+  <div class="container">
+    <div class="grid-3">
+      <div class="card fade-in"><h3>Gyakran lecsapja a biztosíték?</h3><p>Érdemes mielőbb átvizsgáltatni a hálózatot.</p></div>
+      <div class="card fade-in"><h3>Felújítást tervez?</h3><p>Segítünk a teljes elektromos korszerűsítésben.</p></div>
+      <div class="card fade-in"><h3>Régi a villamos hálózat?</h3><p>A biztonságos üzemeléshez korszerűsítésre lehet szükség.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- 🗺️ TÉRKÉP -->
-<section class="p-6">
-  <iframe 
-    src="https://maps.google.com/maps?q=szekesfehervar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    class="w-full h-72 rounded">
-  </iframe>
-</section>
-
-<!-- 📩 FORM -->
-<section class="p-8 bg-[#111]">
-  <h2 class="text-xl text-orange-500 mb-4">Vegye fel velünk a kapcsolatot</h2>
-
-  <form id="contactForm" class="space-y-4 max-w-xl">
-    <input type="text" name="name" placeholder="Név" required class="w-full p-2 bg-black border border-gray-700">
-    <input type="email" name="email" placeholder="Email" required class="w-full p-2 bg-black border border-gray-700">
-    <input type="tel" name="phone" placeholder="Telefonszám" class="w-full p-2 bg-black border border-gray-700">
-    <textarea name="message" placeholder="Üzenet" class="w-full p-2 bg-black border border-gray-700"></textarea>
-
-    <button class="bg-orange-500 px-6 py-2 rounded">
-      Küldés
-    </button>
-  </form>
-
-  <div id="successMessage" class="hidden text-green-400 mt-4">
-    Köszönjük a megkeresést! Kollégáink egyike 24 órán belül felveszi Önnel a kapcsolatot.
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Miért válasszon minket?</h2>
+    <div class="grid-3">
+      <div class="card fade-in"><h3>Tapasztalat</h3><p>Több éves szakmai gyakorlat lakossági és kisebb vállalkozói munkákban.</p></div>
+      <div class="card fade-in"><h3>Precíz kivitelezés</h3><p>Szabványoknak megfelelő, igényes és átlátható munkavégzés.</p></div>
+      <div class="card fade-in"><h3>Gyors egyeztetés</h3><p>Megkeresésekre jellemzően rövid időn belül visszajelzünk.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- 🔻 FOOTER -->
-<footer class="bg-black p-6 text-gray-400 text-sm">
-  <div>© 2026 Papp Ferenc EV</div>
-  <div class="mt-2 space-x-4">
-    <a href="#">Adatkezelés</a>
-    <a href="#">ÁSZF</a>
-    <a href="#">Sütik</a>
+<section class="section">
+  <div class="container">
+    <iframe class="embed-map" src="https://maps.google.com/maps?q=szekesfehervar&t=&z=10&ie=UTF8&iwloc=&output=embed"></iframe>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="form-wrap fade-in">
+      <h2 class="section-title" style="font-size:30px;">Gyors kapcsolatfelvétel</h2>
+      <p class="section-subtitle">Írjon nekünk, és kollégáink 24 órán belül felveszik Önnel a kapcsolatot.</p>
+
+      <form id="quickContactForm" onsubmit="event.preventDefault(); alert('Ehhez a blokkhoz érdemes az ajánlatkérő oldalra irányítani.');">
+        <div class="form-grid-2">
+          <div>
+            <label>Név</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Telefonszám</label>
+            <input type="tel" required>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <label>Rövid üzenet</label>
+          <textarea placeholder="Pl. biztosítéktábla csere, hibakeresés, felújítás..."></textarea>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a href="ajanlatkeres.html" class="btn btn-primary">Tovább az ajánlatkéréshez</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© 2026 Papp Ferenc EV</div>
+    <div class="footer-links">
+      <a href="adatkezeles.html">Adatkezelés</a>
+      <a href="aszf.html">ÁSZF</a>
+      <a href="#" onclick="openCookieSettings(); return false;">Cookie beállítások</a>
+    </div>
   </div>
 </footer>
 
-<!-- ⏱️ IDŐ -->
-<script>
-function updateTime() {
-  const now = new Date();
-  document.getElementById("datetime").innerText =
-    now.toLocaleDateString() + " " + now.toLocaleTimeString();
-}
-setInterval(updateTime, 1000);
-updateTime();
-</script>
+<a href="tel:+36204544068" class="floating-call">📞</a>
 
-<!-- 📩 FORMSPREE -->
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-
-  const response = await fetch("https://formspree.io/f/xqedvgrn", {
-    method: "POST",
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  });
-
-  if (response.ok) {
-    this.reset();
-    document.getElementById("successMessage").classList.remove("hidden");
-  } else {
-    alert("Hiba történt, próbálja újra.");
-  }
-});
-</script>
-
-
-
-<!-- oldal tartalma -->
-
-<script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-</script>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-});
-
-document.querySelectorAll(".fade-in").forEach(el => {
-  observer.observe(el);
-});
-</script>
-
-<a href="tel:+36204544068"
-   class="fixed bottom-5 right-5 bg-orange-500 text-white p-4 rounded-full shadow-lg z-[9999] hover:scale-110 transition flex items-center justify-center">
-
-   <span class="text-xl">📞</span>
-
-</a>
-
-
-<div id="cookieBanner"
-     class="fixed bottom-0 left-0 w-full bg-black text-white p-4 flex flex-col md:flex-row justify-between items-center z-[9999]">
-
-  <p class="text-sm mb-2 md:mb-0">
-    Ez a weboldal sütiket használ a jobb felhasználói élmény érdekében.
-    <a href="adatkezeles.html" class="text-orange-500 underline">Részletek</a>
-  </p>
-
-  <div class="space-x-2">
-    <button onclick="acceptCookies()"
-      class="bg-orange-500 px-4 py-2 rounded">
-      Elfogadom
-    </button>
-
-    <button onclick="declineCookies()"
-      class="border border-gray-500 px-4 py-2 rounded">
-      Elutasítom
-    </button>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-inner">
+    <div>Ez a weboldal sütiket használ. <a href="adatkezeles.html" style="color:#ff6a00;text-decoration:underline;">Részletek</a></div>
+    <div class="cookie-actions">
+      <button class="btn btn-primary" onclick="acceptAllCookies()">Összes elfogadása</button>
+      <button class="btn btn-outline" onclick="acceptNecessaryCookies()">Csak szükséges</button>
+      <button class="btn btn-outline" onclick="openCookieSettings()">Beállítások</button>
+    </div>
   </div>
-
 </div>
 
-<script>
-function acceptCookies() {
-  localStorage.setItem("cookieConsent", "accepted");
-  document.getElementById("cookieBanner").style.display = "none";
-}
+<div class="cookie-modal" id="cookieModal">
+  <div class="cookie-modal-box">
+    <h2 class="section-title" style="font-size:28px; margin-bottom:10px;">Cookie beállítások</h2>
+    <div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span>Szükséges</span><input type="checkbox" checked disabled></div>
+    <div style="display:flex; justify-content:space-between; margin-bottom:20px;"><span>Statisztikai (Google Analytics)</span><input type="checkbox" id="analyticsConsent"></div>
+    <button class="btn btn-primary" style="width:100%;" onclick="saveCookieSettings()">Mentés</button>
+  </div>
+</div>
 
-function declineCookies() {
-  localStorage.setItem("cookieConsent", "declined");
-  document.getElementById("cookieBanner").style.display = "none";
-}
-
-window.onload = function() {
-  const consent = localStorage.getItem("cookieConsent");
-  if (consent) {
-    document.getElementById("cookieBanner").style.display = "none";
-  }
-};
-</script>
-
+<script src="assets/main.js"></script>
 </body>
 </html>

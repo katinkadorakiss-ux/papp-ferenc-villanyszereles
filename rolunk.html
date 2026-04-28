@@ -1,291 +1,83 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rólunk - Papp Ferenc EV</title>
-  <meta name="description" content="Tapasztalt villanyszerelő Székesfehérvár és környékén. Precíz, megbízható kivitelezés.">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-    </style>
-
-  <style>
-    a {
-      transition: 0.2s;
-    }
-
-    a:hover {
-      color: #ff6a00;
-    }
-
-    .card {
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.6s;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  <meta name="description" content="Megbízható villanyszerelés több éves szakmai tapasztalattal.">
+  <meta name="robots" content="index, follow"><meta name="author" content="Papp Ferenc EV">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-<body class="text-white">
+<body>
 
-<!-- 🔝 TOP BAR -->
-<header class="bg-black text-sm px-4 py-2 flex justify-between border-b border-gray-800">
-  <div id="datetime"></div>
-  <div>
-    📞 <a href="tel:+36204544068">+36 20 454 4068</a>
+<header class="topbar"><div class="container topbar-inner"><div id="datetime"></div><div>📞 <a href="tel:+36204544068">+36 20 454 4068</a> | ✉️ <a href="mailto:papp.ferenc.vill@gmail.com">papp.ferenc.vill@gmail.com</a></div></div></header>
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">Papp Ferenc EV</a>
+    <div class="desktop-menu">
+      <a href="index.html">Főoldal</a><a href="szolgaltatasok.html">Szolgáltatások</a><a href="blog.html">Blog</a><a href="rolunk.html" class="active">Rólunk</a><a href="helyszinek.html">Helyszínek</a><a href="kapcsolat.html">Kapcsolat</a><a href="ajanlatkeres.html" class="btn btn-primary">Ajánlatkérés</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
   </div>
-</header>
-
-<!-- 🧭 NAV -->
-<nav class="bg-[#111] px-6 py-4 flex justify-between items-center relative">
-
-  <!-- LOGO -->
-  <div class="text-xl font-bold text-orange-500">
-    Papp Ferenc EV
+  <div class="container mobile-menu" id="mobileMenu">
+    <a href="index.html">Főoldal</a><a href="szolgaltatasok.html">Szolgáltatások</a><a href="blog.html">Blog</a><a href="rolunk.html" class="active">Rólunk</a><a href="helyszinek.html">Helyszínek</a><a href="kapcsolat.html">Kapcsolat</a><a href="ajanlatkeres.html">Ajánlatkérés</a>
   </div>
-
-  <!-- DESKTOP MENU -->
-  <div class="space-x-6 hidden md:block">
-    <a href="index.html">Főoldal</a>
-    <a href="szolgaltatasok.html">Szolgáltatások</a>
-    <a href="blog.html">Blog</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="helyszinek.html">Helyszínek</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
-    <a href="ajanlatkeres.html" class="bg-orange-500 px-3 py-1 rounded">Ajánlatkérés</a>
-  </div>
-
-  <!-- MOBILE BUTTON -->
-  <button onclick="toggleMenu()" class="md:hidden text-2xl">
-    ☰
-  </button>
-
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu"
-       class="hidden absolute top-full left-0 w-full bg-black text-center flex flex-col space-y-4 py-6 z-50">
-
-    <a href="index.html">Főoldal</a>
-    <a href="szolgaltatasok.html">Szolgáltatások</a>
-    <a href="blog.html">Blog</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="helyszinek.html">Helyszínek</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
-    <a href="ajanlatkeres.html" class="text-orange-500">Ajánlatkérés</a>
-
-  </div>
-
 </nav>
 
-<!-- 👤 HERO -->
-<section class="text-center py-20 px-6 bg-gradient-to-b from-black to-[#111] fade-in">
-
-  <h1 class="text-4xl md:text-6xl font-bold mb-6 text-orange-500">
-    Villanyszerelés gyorsan, biztonságosan
-  </h1>
-
-  <p class="max-w-2xl mx-auto text-gray-300 mb-8">
-    Megbízható kivitelezés, korrekt árak, gyors kiszállás.
-  </p>
-
-  <div class="space-x-4">
-    <a href="tel:+36204544068"
-       class="bg-orange-500 px-6 py-3 rounded text-lg">
-       Hívás most
-    </a>
-
-    <a href="ajanlatkeres.html"
-       class="border border-orange-500 px-6 py-3 rounded text-lg">
-       Ajánlatkérés
-    </a>
+<section class="hero fade-in">
+  <div class="container">
+    <h1>Megbízható villanyszerelés, korrekt hozzáállással</h1>
+    <p>Több éves szakmai tapasztalat, precíz kivitelezés és átlátható kommunikáció a kisebb javításoktól a teljes hálózat korszerűsítéséig.</p>
   </div>
-
 </section>
 
-<!-- 👷‍♂️ BEMUTATKOZÁS -->
-<section class="max-w-4xl mx-auto p-6 grid md:grid-cols-2 gap-8 items-center">
-
-  <!-- kép -->
-  <div>
-    <img src="assets/profile.jpg" alt="villanyszerelő" class="rounded shadow-lg">
-  </div>
-
-  <!-- szöveg -->
-  <div>
-    <h2 class="text-xl text-orange-500 mb-4">Ki áll a munkák mögött?</h2>
-
-    <p class="text-gray-300 mb-4">
-      Több éves szakmai tapasztalattal vállalok villanyszerelési munkákat
-      magánszemélyek és kisebb vállalkozások részére egyaránt.
-    </p>
-
-    <p class="text-gray-300">
-      Az egyszerűbb javításoktól kezdve a teljes elektromos hálózat kiépítéséig
-      minden feladatot felelősségteljesen és alaposan végzek el.
-    </p>
-  </div>
-
-</section>
-
-<!-- ✔ ELŐNYÖK -->
-<section class="bg-[#111] p-8">
-  <div class="max-w-4xl mx-auto">
-
-    <h2 class="text-2xl text-orange-500 mb-6">Miért dolgozzanak velünk?</h2>
-
-    <div class="grid md:grid-cols-2 gap-6">
-
-      <div>✔ Pontos, kiszámítható munkavégzés</div>
-      <div>✔ Szabványok betartása</div>
-      <div>✔ Tiszta, igényes kivitelezés</div>
-      <div>✔ Egyenes kommunikáció</div>
-
+<section class="section">
+  <div class="container grid-2">
+    <div class="card fade-in">
+      <h3>Ki áll a munkák mögött?</h3>
+      <p>
+        Több éves szakmai tapasztalattal vállalok villanyszerelési munkákat magánszemélyek és kisebb vállalkozások részére.
+        Az egyszerűbb javításoktól a teljes elektromos hálózat kiépítéséig minden feladatot felelősségteljesen és alaposan végzek el.
+      </p>
     </div>
 
+    <div class="card fade-in">
+      <h3>Hogyan dolgozunk?</h3>
+      <p>
+        Munkám során a biztonság, a szabványok betartása és a tiszta, precíz kivitelezés az elsődleges.
+        Fontosnak tartom az egyenes kommunikációt, hogy ne érje meglepetés sem határidőben, sem költségekben.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- 🧠 HOZZÁÁLLÁS -->
-<section class="max-w-4xl mx-auto p-6">
-
-  <h2 class="text-xl text-orange-500 mb-4">Hogyan dolgozunk?</h2>
-
-  <p class="text-gray-300 mb-4">
-    Munkánk során a biztonság és a szabványok betartása az elsődleges szempont.
-  </p>
-
-  <p class="text-gray-300 mb-4">
-    Fontosnak tartjuk a tiszta, precíz kivitelezést és a korrekt, egyenes kommunikációt,
-    hogy ne érje meglepetés sem határidőben, sem költségekben.
-  </p>
-
-  <p class="text-gray-300">
-    Célunk, hogy ügyfeleink hosszú távon is elégedettek legyenek.
-  </p>
-
-</section>
-
-<!-- 📞 CTA -->
-<section class="text-center p-10 bg-[#111]">
-  <h2 class="text-2xl mb-4">Kérdés esetén keressen minket!</h2>
-
-  <div class="space-x-4">
-    <a href="tel:+36204544068" class="bg-orange-500 px-6 py-3 rounded">
-      Hívás most
-    </a>
-
-    <a href="ajanlatkeres.html" class="border border-orange-500 px-6 py-3 rounded">
-      Ajánlatkérés
-    </a>
+<section class="section">
+  <div class="container">
+    <div class="grid-3">
+      <div class="card fade-in"><h3>Pontos munkavégzés</h3><p>Az elvégzett munka hosszú távú biztonsága a legfontosabb.</p></div>
+      <div class="card fade-in"><h3>Szabványos kivitelezés</h3><p>A munkák minden esetben a hatályos előírások figyelembevételével készülnek.</p></div>
+      <div class="card fade-in"><h3>Korrekt kommunikáció</h3><p>Átlátható egyeztetés, reális tájékoztatás, személyre szabott megoldások.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- 🔻 FOOTER -->
-<footer class="bg-black p-6 text-gray-400 text-sm">
-  © 2026 Papp Ferenc EV
-</footer>
-
-<!-- ⏱️ IDŐ -->
-<script>
-function updateTime() {
-  const now = new Date();
-  document.getElementById("datetime").innerText =
-    now.toLocaleDateString() + " " + now.toLocaleTimeString();
-}
-setInterval(updateTime, 1000);
-updateTime();
-</script>
-
-
-
-<!-- oldal tartalma -->
-
-<script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-</script>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-});
-
-document.querySelectorAll(".fade-in").forEach(el => {
-  observer.observe(el);
-});
-</script>
-
-<a href="tel:+36204544068"
-   class="fixed bottom-5 right-5 bg-orange-500 text-white p-4 rounded-full shadow-lg z-[9999]  hover:scale-110 transition flex items-center justify-center">
-
-   <span class="text-xl">📞</span>
-
-</a>
-
-<div id="cookieBanner"
-     class="fixed bottom-0 left-0 w-full bg-black text-white p-4 flex flex-col md:flex-row justify-between items-center z-[9999]">
-
-  <p class="text-sm mb-2 md:mb-0">
-    Ez a weboldal sütiket használ a jobb felhasználói élmény érdekében.
-    <a href="adatkezeles.html" class="text-orange-500 underline">Részletek</a>
-  </p>
-
-  <div class="space-x-2">
-    <button onclick="acceptCookies()"
-      class="bg-orange-500 px-4 py-2 rounded">
-      Elfogadom
-    </button>
-
-    <button onclick="declineCookies()"
-      class="border border-gray-500 px-4 py-2 rounded">
-      Elutasítom
-    </button>
+<section class="section">
+  <div class="container">
+    <div class="cta-box fade-in">
+      <h2 class="section-title" style="font-size:30px;">Beszéljük meg a feladatot</h2>
+      <p class="section-subtitle">Ha megbízható, pontos és igényes szakembert keres, szívesen állunk rendelkezésére.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="tel:+36204544068" class="btn btn-primary">Hívás most</a>
+        <a href="ajanlatkeres.html" class="btn btn-outline">Ajánlatkérés</a>
+      </div>
+    </div>
   </div>
+</section>
 
-</div>
-
-<script>
-function acceptCookies() {
-  localStorage.setItem("cookieConsent", "accepted");
-  document.getElementById("cookieBanner").style.display = "none";
-}
-
-function declineCookies() {
-  localStorage.setItem("cookieConsent", "declined");
-  document.getElementById("cookieBanner").style.display = "none";
-}
-
-window.onload = function() {
-  const consent = localStorage.getItem("cookieConsent");
-  if (consent) {
-    document.getElementById("cookieBanner").style.display = "none";
-  }
-};
-</script>
-
+<footer class="footer"><div class="container footer-inner"><div>© 2026 Papp Ferenc EV</div><div class="footer-links"><a href="adatkezeles.html">Adatkezelés</a><a href="aszf.html">ÁSZF</a><a href="#" onclick="openCookieSettings(); return false;">Cookie beállítások</a></div></div></footer>
+<a href="tel:+36204544068" class="floating-call">📞</a>
+<div class="cookie-banner" id="cookieBanner"><div class="cookie-inner"><div>Ez a weboldal sütiket használ. <a href="adatkezeles.html" style="color:#ff6a00;text-decoration:underline;">Részletek</a></div><div class="cookie-actions"><button class="btn btn-primary" onclick="acceptAllCookies()">Összes elfogadása</button><button class="btn btn-outline" onclick="acceptNecessaryCookies()">Csak szükséges</button><button class="btn btn-outline" onclick="openCookieSettings()">Beállítások</button></div></div></div>
+<div class="cookie-modal" id="cookieModal"><div class="cookie-modal-box"><h2 class="section-title" style="font-size:28px; margin-bottom:10px;">Cookie beállítások</h2><div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span>Szükséges</span><input type="checkbox" checked disabled></div><div style="display:flex; justify-content:space-between; margin-bottom:20px;"><span>Statisztikai (Google Analytics)</span><input type="checkbox" id="analyticsConsent"></div><button class="btn btn-primary" style="width:100%;" onclick="saveCookieSettings()">Mentés</button></div></div>
+<script src="assets/main.js"></script>
 </body>
 </html>
