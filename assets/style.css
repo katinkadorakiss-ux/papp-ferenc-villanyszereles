@@ -214,6 +214,9 @@ textarea {
   background-repeat: no-repeat;
   overflow: hidden;
 }
+.hero .container {
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
