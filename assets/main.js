@@ -13,7 +13,8 @@ function initDateTime() {
 
   function updateTime() {
     const now = new Date();
-    el.textContent = now.toLocaleDateString("hu-HU") + " " + now.toLocaleTimeString("hu-HU");
+    el.textContent =
+      now.toLocaleDateString("hu-HU") + " " + now.toLocaleTimeString("hu-HU");
   }
 
   updateTime();
@@ -28,12 +29,20 @@ function initNavbar() {
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
       menu.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", menu.classList.contains("open") ? "true" : "false");
+    });
+
+    menu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
     });
   }
 
   if (nav) {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 30) nav.classList.add("scrolled");
+      if (window.scrollY > 20) nav.classList.add("scrolled");
       else nav.classList.remove("scrolled");
     });
   }
@@ -49,11 +58,17 @@ function initAccordion() {
 
 function initFadeIn() {
   const items = document.querySelectorAll(".fade-in");
-  if (!items.length) return;
+  if (!items.length || !("IntersectionObserver" in window)) {
+    items.forEach(item => item.classList.add("visible"));
+    return;
+  }
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
     });
   }, { threshold: 0.1 });
 
@@ -70,16 +85,9 @@ function initCookieConsent() {
   const banner = document.getElementById("cookieBanner");
   const modal = document.getElementById("cookieModal");
   const analyticsCheckbox = document.getElementById("analyticsConsent");
-  const savedConsent = localStorage.getItem("cookieConsent");
-if (analyticsCheckbox && savedConsent === "all") {
-  analyticsCheckbox.checked = true;
-}
-if (analyticsCheckbox && savedConsent === "necessary") {
-  analyticsCheckbox.checked = false;
-}
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function(){ dataLayer.push(arguments); };
+  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
 
   gtag('consent', 'default', {
     analytics_storage: 'denied'
@@ -96,7 +104,9 @@ if (analyticsCheckbox && savedConsent === "necessary") {
   function loadGA() {
     if (window.gaLoaded) return;
 
-    const GA_ID = "G-XXXXXXX"; // <-- Cseréld le a saját Measurement ID-ra
+    const GA_ID = "G-XXXXXXX"; // <-- Cseréld le a saját GA4 Measurement ID-ra
+
+    if (GA_ID === "G-XXXXXXX") return;
 
     const script = document.createElement("script");
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
@@ -111,6 +121,7 @@ if (analyticsCheckbox && savedConsent === "necessary") {
 
   window.acceptAllCookies = function() {
     localStorage.setItem("cookieConsent", "all");
+    if (analyticsCheckbox) analyticsCheckbox.checked = true;
     gtag('consent', 'update', { analytics_storage: 'granted' });
     loadGA();
     hideBanner();
@@ -119,6 +130,7 @@ if (analyticsCheckbox && savedConsent === "necessary") {
 
   window.acceptNecessaryCookies = function() {
     localStorage.setItem("cookieConsent", "necessary");
+    if (analyticsCheckbox) analyticsCheckbox.checked = false;
     hideBanner();
     if (modal) modal.classList.remove("open");
   };
@@ -131,19 +143,25 @@ if (analyticsCheckbox && savedConsent === "necessary") {
     if (analytics) {
       gtag('consent', 'update', { analytics_storage: 'granted' });
       loadGA();
+    } else {
+      gtag('consent', 'update', { analytics_storage: 'denied' });
     }
 
     if (modal) modal.classList.remove("open");
     hideBanner();
   };
 
-  const consent = localStorage.getItem("cookieConsent");
+  const savedConsent = localStorage.getItem("cookieConsent");
 
-  if (consent === "all") {
+  if (analyticsCheckbox) {
+    analyticsCheckbox.checked = savedConsent === "all";
+  }
+
+  if (savedConsent === "all") {
     gtag('consent', 'update', { analytics_storage: 'granted' });
     loadGA();
     hideBanner();
-  } else if (consent === "necessary") {
+  } else if (savedConsent === "necessary") {
     hideBanner();
   } else {
     showBanner();
@@ -170,6 +188,20 @@ function initQuoteForm() {
     if (success) success.style.display = "none";
     if (error) error.style.display = "none";
 
+    const consent = document.getElementById("consent");
+    if (consent && !consent.checked) {
+      if (error) {
+        error.innerHTML = "Kérjük, fogadja el az adatkezelési tájékoztatót és az ÁSZF-et.";
+        error.style.display = "block";
+      }
+      return;
+    }
+
+    const honeypot = form.querySelector('input[name="_gotcha"]');
+    if (honeypot && honeypot.value.trim() !== "") {
+      return;
+    }
+
     const formData = new FormData(form);
 
     if (submitBtn) {
@@ -181,7 +213,9 @@ function initQuoteForm() {
       const response = await fetch("https://formspree.io/f/xqedvgrn", {
         method: "POST",
         body: formData,
-        headers: { "Accept": "application/json" }
+        headers: {
+          "Accept": "application/json"
+        }
       });
 
       if (response.ok) {
@@ -198,10 +232,16 @@ function initQuoteForm() {
           });
         }
       } else {
-        if (error) error.style.display = "block";
+        if (error) {
+          error.innerHTML = "Hiba történt az elküldés során. Kérjük, próbálja újra, vagy hívjon minket telefonon.";
+          error.style.display = "block";
+        }
       }
     } catch (err) {
-      if (error) error.style.display = "block";
+      if (error) {
+        error.innerHTML = "Hiba történt az elküldés során. Kérjük, próbálja újra, vagy hívjon minket telefonon.";
+        error.style.display = "block";
+      }
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
