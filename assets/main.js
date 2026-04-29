@@ -70,6 +70,13 @@ function initCookieConsent() {
   const banner = document.getElementById("cookieBanner");
   const modal = document.getElementById("cookieModal");
   const analyticsCheckbox = document.getElementById("analyticsConsent");
+  const savedConsent = localStorage.getItem("cookieConsent");
+if (analyticsCheckbox && savedConsent === "all") {
+  analyticsCheckbox.checked = true;
+}
+if (analyticsCheckbox && savedConsent === "necessary") {
+  analyticsCheckbox.checked = false;
+}
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
