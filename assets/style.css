@@ -487,5 +487,11 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
   }
+  
+  @media (max-width: 600px) {
+  .topbar-contact-email {
+    display: none;
+  }
+}
 
 }
