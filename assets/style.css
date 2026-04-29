@@ -203,8 +203,17 @@ textarea {
 }
 
 .hero {
-  padding: 64px 0 42px;
+  position: relative;
+  padding: 90px 0 70px;
   text-align: center;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
+    url('villanyszereles-hatter.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
 }
 
 .hero h1 {
