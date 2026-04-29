@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ajánlatkérés - Papp Ferenc EV</title>
   <meta name="description" content="Kérjen gyors villanyszerelési ajánlatot. Általában 24 órán belül visszajelzünk.">
-  <meta name="robots" content="index, follow"><meta name="author" content="Papp Ferenc EV">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Papp Ferenc EV">
+  <link rel="canonical" href="https://SAJATDOMAIN.HU/ajanlatkeres.html">
+  <meta property="og:title" content="Ajánlatkérés - Papp Ferenc EV">
+  <meta property="og:description" content="Töltse ki az űrlapot, és kollégáink jellemzően 24 órán belül felveszik Önnel a kapcsolatot.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://SAJATDOMAIN.HU/ajanlatkeres.html">
+  <meta property="og:image" content="https://SAJATDOMAIN.HU/assets/og-cover.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/style.css">
-    <link rel="canonical" href="https://SAJATDOMAIN.HU/">
-      <meta property="og:title" content="Papp Ferenc EV - Villanyszerelés">
-<meta property="og:description" content="Gyors, precíz és megbízható villanyszerelés Budapest, Pest megye, Fejér megye és Székesfehérvár területén.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://SAJATDOMAIN.HU/">
-<meta property="og:image" content="https://SAJATDOMAIN.HU/assets/og-cover.jpg">
 </head>
 <body>
 
-<header class="topbar"><div class="container topbar-inner"><div id="datetime"></div><div>📞 <a href="tel:+36204544068">+36 20 454 4068</a> | ✉️ <a href="mailto:papp.ferenc.vill@gmail.com">papp.ferenc.vill@gmail.com</a></div></div></header>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div id="datetime"></div>
+    <div class="topbar-contact">
+      <span>📞 <a href="tel:+36204544068">+36 20 454 4068</a></span>
+      <span class="topbar-contact-email">| ✉️ <a href="mailto:papp.ferenc.vill@gmail.com">papp.ferenc.vill@gmail.com</a></span>
+    </div>
+  </div>
+</header>
 
 <nav class="navbar" id="navbar">
   <div class="container nav-inner">
     <a href="index.html" class="logo">Papp Ferenc EV</a>
     <div class="desktop-menu">
-      <a href="index.html">Főoldal</a><a href="szolgaltatasok.html">Szolgáltatások</a><a href="blog.html">Blog</a><a href="rolunk.html">Rólunk</a><a href="helyszinek.html">Helyszínek</a><a href="kapcsolat.html">Kapcsolat</a><a href="ajanlatkeres.html" class="btn btn-primary">Ajánlatkérés</a>
+      <a href="index.html">Főoldal</a>
+      <a href="szolgaltatasok.html">Szolgáltatások</a>
+      <a href="blog.html">Blog</a>
+      <a href="rolunk.html">Rólunk</a>
+      <a href="helyszinek.html">Helyszínek</a>
+      <a href="kapcsolat.html">Kapcsolat</a>
+      <a href="ajanlatkeres.html" class="btn btn-primary">Ajánlatkérés</a>
     </div>
-    <button class="mobile-toggle" id="mobileToggle">☰</button>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
   </div>
   <div class="container mobile-menu" id="mobileMenu">
-    <a href="index.html">Főoldal</a><a href="szolgaltatasok.html">Szolgáltatások</a><a href="blog.html">Blog</a><a href="rolunk.html">Rólunk</a><a href="helyszinek.html">Helyszínek</a><a href="kapcsolat.html">Kapcsolat</a><a href="ajanlatkeres.html" class="active">Ajánlatkérés</a>
+    <a href="index.html">Főoldal</a>
+    <a href="szolgaltatasok.html">Szolgáltatások</a>
+    <a href="blog.html">Blog</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="helyszinek.html">Helyszínek</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="ajanlatkeres.html" class="active">Ajánlatkérés</a>
   </div>
 </nav>
 
 <section class="hero fade-in">
   <div class="container">
     <h1>Kérjen gyors ajánlatot</h1>
-    <p>Töltse ki az űrlapot, és kollégáink jellemzően 24 órán belül felveszik Önnel a kapcsolatot.</p>
+    <p>
+      Minél részletesebben írja le az igényt, annál közelebb tud lenni az előzetes ajánlat
+      a helyszíni felmérés alapján adott végleges ajánlathoz.
+    </p>
   </div>
 </section>
 
@@ -41,10 +67,15 @@
   <div class="container">
     <div class="form-wrap fade-in">
       <h2 class="section-title" style="font-size:30px;">Ajánlatkérő űrlap</h2>
-      <p class="section-subtitle">Minél részletesebben írja le az igényt, annál közelebb tud lenni az előzetes ajánlat a helyszíni felmérés alapján adott végleges ajánlathoz.</p>
+      <p class="section-subtitle">Általában 24 órán belül visszajelzünk.</p>
 
       <form id="quoteForm">
+        <!-- spam csapda -->
         <input type="text" name="_gotcha" style="display:none">
+
+        <!-- Formspree extrák (opcionális, de hasznos) -->
+        <input type="hidden" name="_subject" value="Új ajánlatkérés - Papp Ferenc EV weboldal">
+        <input type="hidden" name="source_page" value="ajanlatkeres.html">
 
         <div class="form-grid-2">
           <div>
@@ -59,7 +90,7 @@
           </div>
         </div>
 
-        <div class="form-grid-2" style="margin-top:16px;">
+        <div class="form-grid-2 mt-16">
           <div>
             <label for="email">Email (opcionális)</label>
             <input id="email" type="email" name="email" placeholder="Pl. minta@email.hu">
@@ -71,7 +102,7 @@
           </div>
         </div>
 
-        <div class="form-grid-2" style="margin-top:16px;">
+        <div class="form-grid-2 mt-16">
           <div>
             <label for="type">Munka típusa *</label>
             <select id="type" name="type" required>
@@ -102,27 +133,36 @@
           </div>
         </div>
 
-        <div style="margin-top:16px;">
+        <div class="mt-16">
           <label for="message">Feladat rövid leírása *</label>
-          <textarea id="message" name="message" required placeholder="Pl. biztosítéktábla csere, gyakran lecsap a biztosíték, teljes lakásfelújítás, sütő bekötés stb."></textarea>
+          <textarea
+            id="message"
+            name="message"
+            required
+            placeholder="Pl. gyakran lecsap a biztosíték, biztosítéktábla csere, teljes lakásfelújítás, sütő bekötés, hány helyiség érintett, kb. mikor lenne aktuális stb."></textarea>
         </div>
 
-        <div class="card" style="margin-top:18px;">
+        <div class="card mt-20">
           <strong>Tájékoztató:</strong><br>
-          Az online megadott árak és előzetes egyeztetés alapján adott információk tájékoztató jellegűek. Pontos végleges ajánlatot a munka mennyiségének, helyszíni adottságainak és a beépítendő anyagoknak az ismeretében tudunk adni.
+          Az online megadott árak és az előzetes egyeztetés alapján adott információk tájékoztató jellegűek.
+          A végleges ajánlatot a munka mennyisége, a helyszíni adottságok és a beépítendő anyagok ismeretében tudjuk pontosítani.
         </div>
 
         <div style="display:flex; gap:10px; align-items:flex-start; margin-top:18px;">
           <input type="checkbox" id="consent" name="consent" required style="width:auto; margin-top:4px;">
           <label for="consent" style="margin:0;">
-            Elfogadom az <a href="adatkezeles.html" target="_blank" style="color:#ff6a00;text-decoration:underline;">adatkezelési tájékoztatót</a> és az
+            Elfogadom az
+            <a href="adatkezeles.html" target="_blank" style="color:#ff6a00;text-decoration:underline;">adatkezelési tájékoztatót</a>
+            és az
             <a href="aszf.html" target="_blank" style="color:#ff6a00;text-decoration:underline;">ÁSZF-et</a>. *
           </label>
         </div>
 
-        <div style="margin-top:20px;">
-          <button id="submitBtn" type="submit" class="btn btn-primary" style="width:100%; padding:16px;">Kérem az ajánlatot</button>
-          <div class="helper" style="text-align:center; margin-top:10px;">Általában 1 munkanapon belül válaszolunk.</div>
+        <div class="mt-20">
+          <button id="submitBtn" type="submit" class="btn btn-primary" style="width:100%; padding:16px;">
+            Kérem az ajánlatot
+          </button>
+          <div class="helper" style="text-align:center; margin-top:10px;">Jellemzően 1 munkanapon belül válaszolunk.</div>
         </div>
       </form>
 
@@ -143,15 +183,53 @@
     <div class="cta-box fade-in">
       <h2 class="section-title" style="font-size:30px;">Inkább telefonálna?</h2>
       <p class="section-subtitle">Sürgős hiba esetén a telefon a leggyorsabb megoldás.</p>
-      <a href="tel:+36204544068" class="btn btn-primary">Hívás most</a>
+      <a href="tel:+36204544068" class="btn btn-primary">📞 Hívás most</a>
     </div>
   </div>
 </section>
 
-<footer class="footer"><div class="container footer-inner"><div>© 2026 Papp Ferenc EV</div><div class="footer-links"><a href="adatkezeles.html">Adatkezelés</a><a href="aszf.html">ÁSZF</a><a href="#" onclick="openCookieSettings(); return false;">Cookie beállítások</a></div></div></footer>
-<a href="tel:+36204544068" class="floating-call">📞</a>
-<div class="cookie-banner" id="cookieBanner"><div class="cookie-inner"><div>Ez a weboldal sütiket használ. <a href="adatkezeles.html" style="color:#ff6a00;text-decoration:underline;">Részletek</a></div><div class="cookie-actions"><button class="btn btn-primary" onclick="acceptAllCookies()">Összes elfogadása</button><button class="btn btn-outline" onclick="acceptNecessaryCookies()">Csak szükséges</button><button class="btn btn-outline" onclick="openCookieSettings()">Beállítások</button></div></div></div>
-<div class="cookie-modal" id="cookieModal"><div class="cookie-modal-box"><h2 class="section-title" style="font-size:28px; margin-bottom:10px;">Cookie beállítások</h2><div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span>Szükséges</span><input type="checkbox" checked disabled></div><div style="display:flex; justify-content:space-between; margin-bottom:20px;"><span>Statisztikai (Google Analytics)</span><input type="checkbox" id="analyticsConsent"></div><button class="btn btn-primary" style="width:100%;" onclick="saveCookieSettings()">Mentés</button></div></div>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© 2026 Papp Ferenc EV</div>
+    <div class="footer-links">
+      <a href="adatkezeles.html">Adatkezelés</a>
+      <a href="aszf.html">ÁSZF</a>
+      <a href="#" onclick="openCookieSettings(); return false;">Cookie beállítások</a>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+36204544068" class="floating-call" aria-label="Hívás">📞</a>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-inner">
+    <div>
+      Ez a weboldal sütiket használ a jobb felhasználói élmény és statisztikai mérés érdekében.
+      <a href="adatkezeles.html" style="color:#ff6a00;text-decoration:underline;">Részletek</a>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn btn-primary" onclick="acceptAllCookies()">Összes elfogadása</button>
+      <button class="btn btn-outline" onclick="acceptNecessaryCookies()">Csak szükséges</button>
+      <button class="btn btn-outline" onclick="openCookieSettings()">Beállítások</button>
+    </div>
+  </div>
+</div>
+
+<div class="cookie-modal" id="cookieModal">
+  <div class="cookie-modal-box">
+    <h2 class="section-title" style="font-size:28px; margin-bottom:10px;">Cookie beállítások</h2>
+    <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+      <span>Szükséges</span>
+      <input type="checkbox" checked disabled>
+    </div>
+    <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+      <span>Statisztikai (Google Analytics)</span>
+      <input type="checkbox" id="analyticsConsent">
+    </div>
+    <button class="btn btn-primary" style="width:100%;" onclick="saveCookieSettings()">Mentés</button>
+  </div>
+</div>
+
 <script src="assets/main.js"></script>
 </body>
 </html>
