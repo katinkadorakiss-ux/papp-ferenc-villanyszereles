@@ -99,19 +99,74 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+/* ===== NAVBAR BRAND FIX PATCH ===== */
+
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  padding: 14px 0;
+  gap: 18px;
+  padding: 16px 0;
 }
 
 .logo {
-  color: var(--primary);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-wrap img {
+  height: 72px;
+  width: auto;
+  max-width: none;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+}
+
+.logo-wrap span {
+  color: #ff7a14;
+  font-size: 24px;
   font-weight: 800;
-  font-size: 20px;
-  letter-spacing: 0.2px;
+  line-height: 1;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+}
+
+.desktop-menu a {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 14px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(255, 106, 0, 0.18);
+}
+
+@media (max-width: 600px) {
+  .logo-wrap {
+    gap: 10px;
+  }
+
+  .logo-wrap img {
+    height: 34px;
+  }
+
+  .logo-wrap span {
+    font-size: 15px;
+  }
 }
 
 .desktop-menu {
@@ -123,6 +178,8 @@ textarea {
 
 .desktop-menu a {
   font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
 }
 
 .desktop-menu a.active {
@@ -167,8 +224,8 @@ textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 20px;
-  border-radius: 12px;
+  padding: 12px 22px;
+  border-radius: 14px;
   font-weight: 700;
   transition: 0.2s ease;
   cursor: pointer;
@@ -184,6 +241,7 @@ textarea {
 .btn-primary {
   background: var(--primary);
   color: #fff;
+  box-shadow: 0 8px 18px rgba(255, 106, 0, 0.18);
 }
 
 .btn-primary:hover {
@@ -208,7 +266,7 @@ textarea {
   text-align: center;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
-    url('villanyszereles-hatter.jpg');
+    url('./villanyszereles-hatter.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -634,4 +692,16 @@ textarea {
   .cookie-actions {
     width: 100%;
   }
+.logo-wrap {
+  gap: 10px;
+}
+
+.logo-wrap img {
+  height: 34px;
+}
+
+.logo-wrap span {
+  font-size: 15px;
+}
+
 }
