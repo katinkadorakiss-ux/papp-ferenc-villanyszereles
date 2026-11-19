@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ajánlatkérés - Papp Ferenc EV</title>
-  <meta name="description" content="Kérjen gyors villanyszerelési ajánlatot. Általában 24 órán belül visszajelzünk.">
+  <meta name="description" content="Kérjen villanyszerelési ajánlatot Pest, Fejér, Veszprém és Komárom-Esztergom vármegyében.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Papp Ferenc EV">
   <link rel="canonical" href="https://SAJATDOMAIN.HU/ajanlatkeres.html">
   <meta property="og:title" content="Ajánlatkérés - Papp Ferenc EV">
-  <meta property="og:description" content="Töltse ki az űrlapot, és kollégáink jellemzően 24 órán belül felveszik Önnel a kapcsolatot.">
+  <meta property="og:description" content="Töltse ki az űrlapot, és egyeztetek Önnel a munka részleteiről.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://SAJATDOMAIN.HU/ajanlatkeres.html">
   <meta property="og:image" content="https://SAJATDOMAIN.HU/assets/og-cover.jpg">
@@ -71,7 +71,7 @@
   <div class="container">
     <div class="form-wrap fade-in">
       <h2 class="section-title" style="font-size:30px;">Ajánlatkérő űrlap</h2>
-      <p class="section-subtitle">Általában 24 órán belül visszajelzünk.</p>
+      <p class="section-subtitle">Az elküldött ajánlatkérés alapján felveszem Önnel a kapcsolatot az egyeztetéshez.</p>
 
       <form id="quoteForm">
         <!-- spam csapda -->
@@ -152,27 +152,33 @@
           A végleges ajánlatot a munka mennyisége, a helyszíni adottságok és a beépítendő anyagok ismeretében tudjuk pontosítani.
         </div>
 
-        <div style="display:flex; gap:10px; align-items:flex-start; margin-top:18px;">
-          <input type="checkbox" id="consent" name="consent" required style="width:auto; margin-top:4px;">
-          <label for="consent" style="margin:0;">
-            Elfogadom az
-            <a href="adatkezeles.html" target="_blank" style="color:#ff6a00;text-decoration:underline;">adatkezelési tájékoztatót</a>
-            és az
-            <a href="aszf.html" target="_blank" style="color:#ff6a00;text-decoration:underline;">ÁSZF-et</a>. *
-          </label>
+        <div style="display:grid; gap:12px; margin-top:18px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <input type="checkbox" id="privacyAcknowledged" name="privacyAcknowledged" required style="width:auto; margin-top:4px;">
+            <label for="privacyAcknowledged" style="margin:0;">
+              Megismertem és elolvastam az
+              <a href="adatkezeles.html" target="_blank" rel="noopener" style="color:#ff6a00;text-decoration:underline;">adatkezelési tájékoztatót</a>. *
+            </label>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <input type="checkbox" id="termsAccepted" name="termsAccepted" required style="width:auto; margin-top:4px;">
+            <label for="termsAccepted" style="margin:0;">
+              Elfogadom az <a href="aszf.html" target="_blank" rel="noopener" style="color:#ff6a00;text-decoration:underline;">ÁSZF-et</a>. *
+            </label>
+          </div>
         </div>
 
         <div class="mt-20">
           <button id="submitBtn" type="submit" class="btn btn-primary" style="width:100%; padding:16px;">
             Kérem az ajánlatot
           </button>
-          <div class="helper" style="text-align:center; margin-top:10px;">Jellemzően 1 munkanapon belül válaszolunk.</div>
+          
         </div>
       </form>
 
       <div id="successMessage" class="notice success">
         <strong>✔ Üzenet sikeresen elküldve</strong><br>
-        Köszönjük megkeresését! Kollégáink 24 órán belül felveszik Önnel a kapcsolatot.
+        Köszönöm megkeresését! Hamarosan egyeztetek Önnel a továbbiakról.
       </div>
 
       <div id="errorMessage" class="notice error">
@@ -208,7 +214,7 @@
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-inner">
     <div>
-      Ez a weboldal sütiket használ a jobb felhasználói élmény és statisztikai mérés érdekében.
+      Ez a weboldal a működéshez szükséges sütiket használja. A statisztikai mérés későbbi aktiválása csak előzetes hozzájárulással történhet.
       <a href="adatkezeles.html" style="color:#ff6a00;text-decoration:underline;">Részletek</a>
     </div>
     <div class="cookie-actions">
