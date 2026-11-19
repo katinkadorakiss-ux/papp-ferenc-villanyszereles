@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  initDateTime();
   initNavbar();
   initAccordion();
   initFadeIn();
@@ -7,58 +6,70 @@ document.addEventListener("DOMContentLoaded", () => {
   initQuoteForm();
 });
 
-function initDateTime() {
-  const el = document.getElementById("datetime");
-  if (!el) return;
-
-  function updateTime() {
-    const now = new Date();
-    el.textContent =
-      now.toLocaleDateString("hu-HU") + " " + now.toLocaleTimeString("hu-HU");
-  }
-
-  updateTime();
-  setInterval(updateTime, 1000);
-}
-
 function initNavbar() {
   const nav = document.getElementById("navbar");
   const toggle = document.getElementById("mobileToggle");
   const menu = document.getElementById("mobileMenu");
 
+  const closeMenu = () => {
+    if (!toggle || !menu) return;
+    menu.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Menü megnyitása");
+  };
+
   if (toggle && menu) {
+    toggle.setAttribute("aria-controls", "mobileMenu");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Menü megnyitása");
+
     toggle.addEventListener("click", () => {
-      menu.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", menu.classList.contains("open") ? "true" : "false");
+      const open = !menu.classList.contains("open");
+      menu.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Menü bezárása" : "Menü megnyitása");
     });
 
-    menu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    document.addEventListener("click", event => {
+      if (!menu.contains(event.target) && !toggle.contains(event.target)) closeMenu();
     });
   }
 
   if (nav) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) nav.classList.add("scrolled");
-      else nav.classList.remove("scrolled");
-    });
+    const updateNav = () => nav.classList.toggle("scrolled", window.scrollY > 12);
+    updateNav();
+    window.addEventListener("scroll", updateNav, { passive: true });
   }
 }
 
 function initAccordion() {
-  document.querySelectorAll(".accordion-trigger").forEach(btn => {
-    btn.addEventListener("click", () => {
-      btn.parentElement.classList.toggle("open");
+  document.querySelectorAll(".accordion-item").forEach((item, index) => {
+    const button = item.querySelector(".accordion-trigger");
+    const panel = item.querySelector(".accordion-content");
+    if (!button || !panel) return;
+
+    if (!panel.id) panel.id = `accordion-panel-${index + 1}`;
+    button.setAttribute("aria-controls", panel.id);
+    button.setAttribute("aria-expanded", String(item.classList.contains("open")));
+
+    button.addEventListener("click", () => {
+      const open = !item.classList.contains("open");
+      item.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
     });
   });
 }
 
 function initFadeIn() {
   const items = document.querySelectorAll(".fade-in");
-  if (!items.length || !("IntersectionObserver" in window)) {
+  if (!items.length || !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     items.forEach(item => item.classList.add("visible"));
     return;
   }
@@ -70,14 +81,17 @@ function initFadeIn() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   items.forEach(item => observer.observe(item));
 }
 
 function openCookieSettings() {
   const modal = document.getElementById("cookieModal");
-  if (modal) modal.classList.add("open");
+  if (modal) {
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  }
 }
 window.openCookieSettings = openCookieSettings;
 
@@ -85,91 +99,91 @@ function initCookieConsent() {
   const banner = document.getElementById("cookieBanner");
   const modal = document.getElementById("cookieModal");
   const analyticsCheckbox = document.getElementById("analyticsConsent");
+  const consentKey = "cookieConsent";
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
-  gtag('consent', 'default', {
-    analytics_storage: 'denied'
+  window.gtag("consent", "default", {
+    analytics_storage: "denied"
   });
 
-  function hideBanner() {
-    if (banner) banner.style.display = "none";
-  }
-
-  function showBanner() {
-    if (banner) banner.style.display = "block";
-  }
+  const hideBanner = () => { if (banner) banner.style.display = "none"; };
+  const showBanner = () => { if (banner) banner.style.display = "block"; };
+  const closeModal = () => {
+    if (modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  };
 
   function loadGA() {
-    if (window.gaLoaded) return;
-
-    const GA_ID = "G-XXXXXXX"; // <-- Cseréld le a saját GA4 Measurement ID-ra
-
-    if (GA_ID === "G-XXXXXXX") return;
+    // Add the actual GA4 Measurement ID only after the site owner confirms it.
+    const GA_ID = "G-XXXXXXX";
+    if (window.gaLoaded || GA_ID === "G-XXXXXXX") return;
 
     const script = document.createElement("script");
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
     script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
     document.head.appendChild(script);
-
-    gtag('js', new Date());
-    gtag('config', GA_ID);
-
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID);
     window.gaLoaded = true;
   }
 
-  window.acceptAllCookies = function() {
-    localStorage.setItem("cookieConsent", "all");
+  window.acceptAllCookies = function () {
+    localStorage.setItem(consentKey, "all");
     if (analyticsCheckbox) analyticsCheckbox.checked = true;
-    gtag('consent', 'update', { analytics_storage: 'granted' });
+    window.gtag("consent", "update", { analytics_storage: "granted" });
     loadGA();
     hideBanner();
-    if (modal) modal.classList.remove("open");
+    closeModal();
   };
 
-  window.acceptNecessaryCookies = function() {
-    localStorage.setItem("cookieConsent", "necessary");
+  window.acceptNecessaryCookies = function () {
+    localStorage.setItem(consentKey, "necessary");
     if (analyticsCheckbox) analyticsCheckbox.checked = false;
+    window.gtag("consent", "update", { analytics_storage: "denied" });
     hideBanner();
-    if (modal) modal.classList.remove("open");
+    closeModal();
   };
 
-  window.saveCookieSettings = function() {
-    const analytics = analyticsCheckbox?.checked;
-
-    localStorage.setItem("cookieConsent", analytics ? "all" : "necessary");
-
-    if (analytics) {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-      loadGA();
-    } else {
-      gtag('consent', 'update', { analytics_storage: 'denied' });
-    }
-
-    if (modal) modal.classList.remove("open");
+  window.saveCookieSettings = function () {
+    const analytics = Boolean(analyticsCheckbox && analyticsCheckbox.checked);
+    localStorage.setItem(consentKey, analytics ? "all" : "necessary");
+    window.gtag("consent", "update", { analytics_storage: analytics ? "granted" : "denied" });
+    if (analytics) loadGA();
     hideBanner();
+    closeModal();
   };
 
-  const savedConsent = localStorage.getItem("cookieConsent");
-
-  if (analyticsCheckbox) {
-    analyticsCheckbox.checked = savedConsent === "all";
+  let savedConsent = null;
+  try {
+    savedConsent = localStorage.getItem(consentKey);
+  } catch (error) {
+    // When storage is unavailable, keep analytics disabled and show the consent banner.
   }
 
+  if (analyticsCheckbox) analyticsCheckbox.checked = savedConsent === "all";
+
   if (savedConsent === "all") {
-    gtag('consent', 'update', { analytics_storage: 'granted' });
+    window.gtag("consent", "update", { analytics_storage: "granted" });
     loadGA();
     hideBanner();
   } else if (savedConsent === "necessary") {
+    window.gtag("consent", "update", { analytics_storage: "denied" });
     hideBanner();
   } else {
     showBanner();
   }
 
   if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", modal.classList.contains("open") ? "false" : "true");
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeModal();
+    });
+    modal.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeModal();
     });
   }
 }
@@ -182,27 +196,29 @@ function initQuoteForm() {
   const success = document.getElementById("successMessage");
   const error = document.getElementById("errorMessage");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  if (success) success.setAttribute("role", "status");
+  if (error) error.setAttribute("role", "alert");
 
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
     if (success) success.style.display = "none";
     if (error) error.style.display = "none";
 
-    const consent = document.getElementById("consent");
-    if (consent && !consent.checked) {
+    const privacyAcknowledged = document.getElementById("privacyAcknowledged");
+    const termsAccepted = document.getElementById("termsAccepted");
+    if ((privacyAcknowledged && !privacyAcknowledged.checked) || (termsAccepted && !termsAccepted.checked)) {
       if (error) {
-        error.innerHTML = "Kérjük, fogadja el az adatkezelési tájékoztatót és az ÁSZF-et.";
+        error.textContent = "Kérjük, olvassa el az adatkezelési tájékoztatót, és fogadja el az ÁSZF-et.";
         error.style.display = "block";
       }
       return;
     }
 
     const honeypot = form.querySelector('input[name="_gotcha"]');
-    if (honeypot && honeypot.value.trim() !== "") {
-      return;
-    }
+    if (honeypot && honeypot.value.trim() !== "") return;
 
     const formData = new FormData(form);
+    const originalLabel = submitBtn ? submitBtn.textContent : "";
 
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -213,39 +229,30 @@ function initQuoteForm() {
       const response = await fetch("https://formspree.io/f/xqedvgrn", {
         method: "POST",
         body: formData,
-        headers: {
-          "Accept": "application/json"
-        }
+        headers: { "Accept": "application/json" }
       });
 
-      if (response.ok) {
-        form.reset();
+      if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
 
-        if (success) {
-          success.style.display = "block";
-          success.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-
-        if (typeof window.gtag === "function") {
-          gtag("event", "generate_lead", {
-            form_name: "ajanlatkeres"
-          });
-        }
-      } else {
-        if (error) {
-          error.innerHTML = "Hiba történt az elküldés során. Kérjük, próbálja újra, vagy hívjon minket telefonon.";
-          error.style.display = "block";
-        }
+      form.reset();
+      if (success) {
+        success.style.display = "block";
+        success.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-    } catch (err) {
+
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", { form_name: "ajanlatkeres" });
+      }
+    } catch (submissionError) {
       if (error) {
-        error.innerHTML = "Hiba történt az elküldés során. Kérjük, próbálja újra, vagy hívjon minket telefonon.";
+        error.textContent = "Hiba történt az elküldés során. Kérjük, próbálja újra, vagy hívjon minket telefonon.";
         error.style.display = "block";
+        error.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Kérem az ajánlatot";
+        submitBtn.textContent = originalLabel || "Kérem az ajánlatot";
       }
     }
   });
